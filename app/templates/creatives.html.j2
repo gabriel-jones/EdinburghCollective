@@ -1,0 +1,23 @@
+{% extends "base.html.j2" %}
+{% set active_page = 'creatives' %}
+
+{% from "macros/creative_card.html.j2" import creative_card %}
+
+
+{% block title %}Creatives{% endblock %}
+
+{% block content %}
+<div class='content-inner'>
+	<div class='row categories'>
+		<a href='/creatives' {% if active_category is none %}class='active'{% endif %}>ALL</a>
+		{% for category in categories %}
+		<a href='/creatives/{{ category.name }}' {% if category.id == active_category.id %}class='active'{% endif %}>{{ category.name }}</a>
+		{% endfor %}
+	</div>
+	<div class='card-grid'>
+		{% for creative in creatives %}
+		{{ creative_card(creative) }}
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

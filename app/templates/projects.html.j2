@@ -1,0 +1,17 @@
+{% extends "base.html.j2" %}
+{% set active_page = 'projects' %}
+
+{% from "macros/project_card.html.j2" import project_card %}
+
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+<div class='content-inner'>
+	<div class='card-grid'>
+		{% for project in projects %}
+			{{ project_card(project) }}
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% macro media_card(media) -%}
+<div class='media-card card'>
+	<a class='card-link' href="{{ media.media_url }}">
+		<img src="{{ media.media_url }}">
+		<div class='media-caption'>
+			{{ media.caption }}
+		</div>
+	</a>
+</div>
+{%- endmacro %}

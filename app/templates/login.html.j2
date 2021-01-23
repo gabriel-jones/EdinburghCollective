@@ -1,0 +1,30 @@
+{% extends "base.html.j2" %}
+
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class='content-inner'>
+	<form method="POST">
+		<h1>Login</h1>
+		{% if form.errors %}
+			{% for error in form.errors %}
+			<div class='banner warn'>
+				{{ error }}
+			</div>
+			{% endfor %}
+		{% endif %}
+		{{ form.csrf_token() }}
+		<div class='row'>
+			<input type="email" name="email" placeholder="Email" value="{{ form.email.data if form.email.data }}" />
+		</div>
+		<div class='row'>
+			<input type="password" name="password" placeholder="Password" />
+		</div>
+
+		<div class='row'>
+			<button type="submit" name="submit_button" id="submit_button" class='button'>Login</button>
+		</div>
+	</form>
+</div>
+{% endblock %}

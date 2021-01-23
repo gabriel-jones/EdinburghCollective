@@ -1,0 +1,83 @@
+{% extends "base.html.j2" %}
+{% set active_page = 'creatives' %}
+
+{% from "macros/media_card.html.j2" import media_card %}
+{% from "macros/icon.html.j2" import icon %}
+
+
+{% block title %}{{ creative.name }}{% endblock %}
+
+{% block content %}
+<div class='content-inner'>
+	<div class='sidebar'>
+		<img class='profile-img' src="{{ creative.profile_image.media_url }}">
+		<h1>{{ creative.name }}</h1>
+
+		{% if creative.about is not none %}
+		<p class='text-sub'>{{ creative.about }}</p>
+		{% endif %}
+
+		{% if creative.website is not none %}
+		<a class='tag-link text' href='https://{{ creative.website }}' target='_blank'>
+			{{ icon('link', size=20) }}
+			{{ creative.website }}
+		</a>
+		{% endif %}
+
+		{% if creative.email is not none %}
+		<a class='tag-link text' href='mailto:{{ creative.email }}'>
+			{{ icon('email', size=20) }}
+			{{ creative.email }}
+		</a>
+		{% endif %}
+		
+		<div class='row sm-container'>
+			{% if creative.instagram_url is not none %}
+			<a class='tag-link instagram' href='{{ creative.instagram_url }}' target='_blank'>
+				{{ icon('instagram', size=32) }}
+			</a>
+			{% endif %}
+			{% if creative.twitter_url is not none %}
+			<a class='tag-link twitter' href='{{ creative.twitter_url }}' target='_blank'>
+				{{ icon('twitter', size=32) }}
+			</a>
+			{% endif %}
+			{% if creative.facebook_url is not none %}
+			<a class='tag-link facebook' href='{{ creative.facebook_url }}' target='_blank'>
+				{{ icon('facebook', size=32) }}
+			</a>
+			{% endif %}
+			{% if creative.bandcamp_url is not none %}
+			<a class='tag-link bandcamp' href='{{ creative.bandcamp_url }}' target='_blank'>
+				{{ icon('bandcamp', size=32) }}
+			</a>
+			{% endif %}
+			{% if creative.reddit_url is not none %}
+			<a class='tag-link reddit' href='{{ creative.reddit_url }}' target='_blank'>
+				{{ icon('reddit', size=32) }}
+			</a>
+			{% endif %}
+			{% if creative.spotify_url is not none %}
+			<a class='tag-link spotify' href='{{ creative.spotify_url }}' target='_blank'>
+				{{ icon('spotify', size=32) }}
+			</a>
+			{% endif %}
+			{% if creative.apple_music_url is not none %}
+			<a class='tag-link apple-music' href='{{ creative.apple_music_url }}' target='_blank'>
+				{{ icon('apple-music', size=32) }}
+			</a>
+			{% endif %}
+			{% if creative.soundcloud_url is not none %}
+			<a class='tag-link soundcloud' href='{{ creative.soundcloud_url }}' target='_blank'>
+				{{ icon('soundcloud', size=32) }}
+			</a>
+			{% endif %}
+		</div>
+	</div>
+	<div class='media-grid'>
+		{% for media in creative.media %}
+		{{ media_card(media) }}
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html.j2" %}
+{% set active_page = 'home' %}
+
+{% from "macros/creative_card.html.j2" import creative_card %}
+{% from "macros/project_card.html.j2" import project_card %}
+
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<img id="home-img" src="{{ url_for('static', filename='img/index_cover.jpg') }}">
+<div id="content-home" class='content-inner'>
+	<h1 class='condensed'>Welcome to <b>The Edinburgh Collective</b></h1>
+	<p class='text-sub'>About us and what our goals our: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec senectus sed sed ut.</p>
+
+	{% for project in projects %}
+		{{ project_card(project) }}
+	{% endfor %}
+</div>
+<div class='stretch-panel'>
+	<h2 class='condensed'>About us</h2>
+	<div class='row'>
+		{% for creative in home_creatives %}
+		{{ creative_card(creative) }}
+		{% endfor %}
+	</div>
+</div>
+<div class='content-inner'>
+	<h2 class='condensed'>Recent posts</h2>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "base.html.j2" %}
+
+
+{% block title %}New Creative{% endblock %}
+
+{% block content %}
+<div class='content-inner'>
+	<form method="POST">
+		<h1>New Creative</h1>
+		{% if form.errors %}
+			{% for error in form.errors %}
+			<div class='banner warn'>
+				{{ error }}
+			</div>
+			{% endfor %}
+		{% endif %}
+		{{ form.csrf_token() }}
+		<div class='row'>
+			<input type="text" name="name" placeholder="Full Name" value="{{ form.name.data if form.name.data }}"/>
+		</div>
+		<div class='row'>
+			<input type="text" name="about" placeholder="Bio" value="{{ form.about.data if form.about.data }}"/>
+		</div>
+		<div class='col'>
+			<label for="category">Category</label>
+			<select id="category" name="category">
+				{% for choice in form.category.choices %}
+				<option value="{{ choice[0] }}" {% if choice[0] == form.category.data %}selected{% endif %}>{{ choice[1] }}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div class='col'>
+			<label for="profile_image">Profile Image</label>
+			<input id="profile_image" type="file" name="profile_image" accept="image/*">
+		</div>
+		<div class='row'>
+			<input type="email" name="email" placeholder="Email" value="{{ form.email.data if form.email.data }}" />
+		</div>
+		<div class='row'>
+			<input type="text" name="website" placeholder="Website (optional)" value="{{ form.website.data if form.website.data }}"/>
+		</div>
+		<h2>Social Media</h2>
+		<div class='row'>
+			<input type="text" name="instagram_url" placeholder="Instagram URL (Optional)" value="{{ form.instagram_url.data if form.instagram_url.data }}" />
+		</div>
+		<div class='row'>
+			<input type="text" name="twitter_url" placeholder="Twitter URL (Optional)" value="{{ form.twitter_url.data if form.twitter_url.data }}" />
+		</div>
+		<div class='row'>
+			<input type="text" name="facebook_url" placeholder="Facebook URL (Optional)" value="{{ form.facebook_url.data if form.facebook_url.data }}" />
+		</div>
+		<div class='row'>
+			<input type="text" name="bandcamp_url" placeholder="Bandcamp URL (Optional)" value="{{ form.bandcamp_url.data if form.bandcamp_url.data }}" />
+		</div>
+		<div class='row'>
+			<input type="text" name="reddit_url" placeholder="Reddit URL (Optional)" value="{{ form.reddit_url.data if form.reddit_url.data }}" />
+		</div>
+		<div class='row'>
+			<input type="text" name="spotify_url" placeholder="Spotify URL (Optional)" value="{{ form.spotify_url.data if form.spotify_url.data }}" />
+		</div>
+		<div class='row'>
+			<input type="text" name="apple_music_url" placeholder="Apple Music URL (Optional)" value="{{ form.apple_music_url.data if form.apple_music_url.data }}" />
+		</div>
+		<div class='row'>
+			<input type="text" name="soundcloud_url" placeholder="Soundcloud URL (Optional)" value="{{ form.soundcloud_url.data if form.soundcloud_url.data }}" />
+		</div>
+
+		<div class='row'>
+			<button type="submit" name="submit_button" id="submit_button" class='button'>Submit</button>
+		</div>
+	</form>
+</div>
+{% endblock %}

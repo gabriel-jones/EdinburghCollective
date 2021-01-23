@@ -1,0 +1,12 @@
+{% macro creative_card(creative) -%}
+<div class='creative-card'>
+	<a class='card-link' href="/creatives/{{ creative.id }}">
+		<!-- {{ creative.profile_image.media_url }} -->
+		<img src="/static/img/uploads/2.jpg">
+		<div class='col'>
+			<h3>{{ creative.name }}</h3>
+			<h4>{{ creative.category.name }}</h4>
+		</div>
+	</a>
+</div>
+{%- endmacro %}

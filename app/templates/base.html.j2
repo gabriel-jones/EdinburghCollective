@@ -1,0 +1,24 @@
+{% from "navbar.html.j2" import navbar %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}{% endblock %} | Edinburgh Collective</title>
+	<!-- TODO: meta -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+	<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+	{{ navbar(active_page) }}
+	<div id="content">
+		{% block content %}{% endblock %}
+	</div>
+	<div id="footer">
+		<p class='text-sub'>The Edinburgh Collective &copy; {{ now.year }}  – Designed and Developed by <a class='text-theme' href='https://www.github.com/gabriel-jones'>Gabriel Jones</a></p>
+	</div>
+	<script type="text/javascript">
+		console.log("This website was created by gabriel-jones:\nhttps://www.github.com/gabriel-jones");
+	</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends "base.html.j2" %}
+{% set active_page = 'projects' %}
+
+{% from "macros/media_card.html.j2" import media_card %}
+{% from "macros/icon.html.j2" import icon %}
+
+
+{% block title %}{{ project.name }}{% endblock %}
+
+{% block content %}
+<div class='content-inner'>
+	<div class='sidebar'>
+		<img class='profile-img' src="{{ project.profile_image.media_url }}">
+		<h1>{{ project.name }}</h1>
+
+		{% if project.about is not none %}
+		<p class='text-sub'>{{ project.about }}</p>
+		{% endif %}
+	</div>
+	<div class='media-grid'>
+	</div>
+</div>
+{% endblock %}

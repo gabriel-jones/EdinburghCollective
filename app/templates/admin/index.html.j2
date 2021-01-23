@@ -1,0 +1,15 @@
+{% extends "base.html.j2" %}
+
+
+{% block title %}Admin{% endblock %}
+
+{% block content %}
+<div class='content-inner'>
+	<h1>Welcome, {{ current_user.name }}</h1>
+	<div id='admin-index-buttons'>
+		{% if current_user.is_admin %}<a class='button' href='/admin/creative'>+ New Creative</a>{% endif %}
+		<a class='button' href='/admin/project'>+ New Project</a>
+		<a class='button' href='/admin/media'>+ New Media Upload</a>
+	</div>
+</div>
+{% endblock %}

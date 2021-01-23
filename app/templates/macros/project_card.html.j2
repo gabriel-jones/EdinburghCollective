@@ -1,0 +1,16 @@
+{% from "macros/icon.html.j2" import icon %}
+
+
+{% macro project_card(project) -%}
+<div class='project-card'>
+	<a class='card-link' href="/projects/{{ project.id }}">
+		<!-- {{ project.profile_image.media_url }} -->
+		<img src="/static/img/uploads/2.jpg">
+		<div class='col'>
+			<h3>{{ project.name }}</h3>
+			<span class='text-sub'>{{ project.members|length }} members</span>
+			{{ icon('arrow-r', size=16) }}
+		</div>
+	</a>
+</div>
+{%- endmacro %}

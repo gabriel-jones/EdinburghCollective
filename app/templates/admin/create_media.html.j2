@@ -1,0 +1,63 @@
+{% extends "base.html.j2" %}
+
+
+{% block title %}New Media{% endblock %}
+
+{% block content %}
+<div class='content-inner'>
+	<form method="POST">
+		<h1>New Media</h1>
+		{% if form.errors %}
+			{% for error in form.errors %}
+			<div class='banner warn'>
+				{{ error }}
+			</div>
+			{% endfor %}
+		{% endif %}
+		{{ form.csrf_token() }}
+		<div class='row'>
+			<input type="text" name="caption" placeholder="Caption (Optional)" value="{{ form.caption.data if form.caption.data }}"/>
+		</div>
+
+		<label style="display: block">Media Type</label>
+
+		<style>
+			#media_image_container { display: none; }
+			#media_type_image:checked ~ #media_image_container {
+				display: flex;
+			}
+			#media_type_image:checked ~ #url_container {
+				display: none;
+			}
+		</style>
+
+		<input type="radio" name="media_type" value="0" id="media_type_image"/>
+		<label for="media_type_image">Image</label>
+
+		<input type="radio" name="media_type" value="1" id="media_type_youtube"/>
+		<label for="media_type_youtube">YouTube</label>
+
+		<input type="radio" name="media_type" value="2" id="media_type_video"/>
+		<label for="media_type_video">Video URL</label>
+
+		<input type="radio" name="media_type" value="3" id="media_type_spotify"/>
+		<label for="media_type_spotify">Spotify</label>
+
+		<input type="radio" name="media_type" value="4" id="media_type_apple_music"/>
+		<label for="media_type_apple_music">Apple Music</label>
+
+		<div class='col' id="media_image_container">
+			<label for="media_image">Image</label>
+			<input id="media_image" type="file" name="media_image" accept="image/*">
+		</div>
+
+		<div class='row' id="url_container">
+			<input type="text" name="url" placeholder="Media URL " value="{{ form.url.data if form.url.data }}"/>
+		</div>
+
+		<div class='row'>
+			<button type="submit" name="submit_button" id="submit_button" class='button'>Submit</button>
+		</div>
+	</form>
+</div>
+{% endblock %}

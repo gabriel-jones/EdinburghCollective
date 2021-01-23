@@ -1,0 +1,24 @@
+{% from "macros/icon.html.j2" import icon %}
+
+
+{% macro navbar(active_page) -%}
+<nav id="navbar">
+	<a id="navbar-logo" href="/">
+		{{ icon('ring', size=40) }}
+		<h2>THE EDINBURGH COLLECTIVE</h2>
+	</a>
+
+	<input type="checkbox" name="menu" id="navbar-menu-input" />
+	<label id="navbar-menu" for="navbar-menu-input">
+		{{ icon('hamburger', size=24) }}
+		{{ icon('close', size=24) }}
+	</label>
+
+	<div id="navbar-links" class="{{ active_page }}">
+		<a href="/" {% if active_page == "home" %}class='active'{% endif %}>HOME</a>
+		<a href="/creatives" {% if active_page == "creatives" %}class='active'{% endif %}>CREATIVES</a>
+		<a href="/projects" {% if active_page == "projects" %}class='active'{% endif %}>PROJECTS</a>
+		<a href="/contact" {% if active_page == "contact" %}class='active'{% endif %}>CONTACT</a>
+	</div>
+</nav>
+{%- endmacro %}

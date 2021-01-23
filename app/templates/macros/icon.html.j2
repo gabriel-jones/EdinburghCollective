@@ -1,0 +1,7 @@
+{% macro icon(name, size=24) -%}
+	{% if name in ICONS %}
+	<div class='icon'>
+		<svg class='icon' fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="{{ size }}" height="{{ size }}">{{ ICONS[name] }}</svg>
+	</div>
+	{% endif %}
+{%- endmacro %}
