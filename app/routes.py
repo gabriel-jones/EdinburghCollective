@@ -187,6 +187,7 @@ def create_creative():
 			file.save(media.file_url)
 		
 		creative.email = form.email.data
+		creative.set_password(form.password.data)
 		creative.website = form.website.data
 		creative.instagram_url = form.instagram_url.data
 		creative.twitter_url = form.twitter_url.data

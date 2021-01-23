@@ -317,7 +317,7 @@ input[type='radio']:checked + label {
 }
 
 #navbar-menu-input:checked ~ #navbar-links a {
-	margin-bottom: 24px;
+	padding: 12px 0;
 }
 
 /* Content */

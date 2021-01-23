@@ -47,6 +47,8 @@ class CreateCreativeForm(FlaskForm):
 	# TODO: make these have data=None if they're empty (len == 0)
 
 	email = StringField('email', validators=[ DataRequired() ])
+	password = PasswordField('password', validators=[ DataRequired() ])
+	
 	website = StringField('website', validators=[ Optional() ])
 
 	instagram_url = StringField('instagram_url', validators=[ Optional() ])
